@@ -1,12 +1,30 @@
 import "./App.css";
-import { Component } from "react";
+import React, { Component } from "react";
+import { Route, Routes } from "react-router-dom";
+import Movies from "./components/movies";
+import NavBar from "./components/common/navbar";
+import NotFound from "./components/notFound";
+import Rentals from "./components/rentals";
+import Customers from "./components/customers";
+import MovieForm from "./components/movieForm";
 
 class App extends Component {
   render() {
     return (
-      <main className="container">
-        <h1>Vidly</h1>
-      </main>
+      <React.Fragment>
+        <main className="container">
+          <Routes>
+            <Route path="/" element={<NavBar />}>
+              <Route path="/" index element={<Movies />} />
+              <Route path="movies" element={<Movies />} />
+              <Route path="/movies/:id" index element={<MovieForm />} />
+              <Route path="customers" element={<Customers />} />
+              <Route path="rentals" element={<Rentals />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+        </main>
+      </React.Fragment>
     );
   }
 }
