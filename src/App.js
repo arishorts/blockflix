@@ -7,6 +7,7 @@ import NotFound from "./components/notFound";
 import Rentals from "./components/rentals";
 import Customers from "./components/customers";
 import MovieForm from "./components/movieForm";
+import LoginForm from "./components/loginform";
 
 class App extends Component {
   render() {
@@ -15,11 +16,12 @@ class App extends Component {
         <main className="container">
           <Routes>
             <Route path="/" element={<NavBar />}>
-              <Route path="/" index element={<Movies />} />
+              <Route path="login" index element={<LoginForm />} />
               <Route path="movies" element={<Movies />} />
-              <Route path="/movies/:id" index element={<MovieForm />} />
+              <Route path="movies/:id" index element={<MovieForm />} />
               <Route path="customers" element={<Customers />} />
               <Route path="rentals" element={<Rentals />} />
+              <Route path="/" index element={<Movies />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
